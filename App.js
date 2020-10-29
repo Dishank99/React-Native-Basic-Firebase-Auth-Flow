@@ -1,13 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Dashboard from './screens/Dashboard'
+import SignIn from './screens/SignIn'
+import SignUp from './screens/SignUp'
+import AuthStack from './routes/AuthStack'
+import HomeStack from './routes/HomeStack'
+import PrivateRoute from './routes/PrivateRoute'
+import AuthProvider, { useAuth } from './context/AuthContext'
 
 export default function App() {
+  // const { currentUser } = useAuth()
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AuthProvider>
+      <PrivateRoute/>
+    </AuthProvider>
   );
 }
 
