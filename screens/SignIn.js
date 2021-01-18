@@ -21,18 +21,28 @@ export default function SignIn({navigation}){
             onSubmit={async (values, actions)=>{
                 console.log(values)
                 setLoading(true)
-                try{
-                    const creds = await signin(values.email, values.password)
-                    if (creds){
-                        Alert.alert('Info', 'Signed In Successfully')
-                        setLoading(false)
-                    }
-                }catch(err){
-                    Alert.alert('Error', err.message)
-                }
-                finally{
+                signin(values.email, values.password)
+                .then(()=>{
+                    Alert.alert('Info', 'Signed In Successfully')
                     setLoading(false)
-                }
+                })
+                .catch(err=>{
+                    Alert.alert('Error', err.message)
+                    setLoading(false)
+                })
+
+                // try{
+                //     const creds = await signin(values.email, values.password)
+                //     if (creds){
+                //         Alert.alert('Info', 'Signed In Successfully')
+                //         setLoading(false)
+                //     }
+                // }catch(err){
+                //     Alert.alert('Error', err.message)
+                // }
+                // finally{
+                //     setLoading(false)
+                // }
             }}
         >
         {(props)=>{

@@ -17,6 +17,8 @@ export default function AuthProvider({ children }){
 
     const signout = () => auth.signOut()
 
+    const updatePassword = (newPassword) => currentUser.updatePassword(newPassword)
+
     useEffect(()=>{
         const unsubscribe = auth.onAuthStateChanged(user=>{
             setCurrentUser(user)
@@ -31,6 +33,7 @@ export default function AuthProvider({ children }){
         signup,
         signin,
         signout,
+        updatePassword,
         setLoading,
     }
 

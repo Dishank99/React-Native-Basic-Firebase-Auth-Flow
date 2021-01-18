@@ -34,18 +34,28 @@ export default function SignUp({navigation}){
             initialValues={{email: '', password: '', confirmpassword: ''}}
             validationSchema={validationSchema}
             onSubmit={async (values, actions)=>{
-                try{
-                    console.log('on submit')
-                    setLoading(true)
-                    const creds = await auth.createUserWithEmailAndPassword(values.email, values.password)
-                    if(creds){
-                        Alert.alert('Info', 'Account Created Successfully')
-                        setLoading(false)
-                    }
-                }catch(err){
+                setLoading(true)
+                signup(values.email, values.password)
+                .then(()=>{
+                    Alert.alert('Info', 'Account Created Successfully')
+                    setLoading(false)
+                })
+                .catch(err=>{
                     Alert.alert('Error',err.message)
                     setLoading(false)
-                }
+                })
+                // try{
+                //     console.log('on submit')
+                //     setLoading(true)
+                //     const creds = await auth.createUserWithEmailAndPassword(values.email, values.password)
+                //     if(creds){
+                //         Alert.alert('Info', 'Account Created Successfully')
+                //         setLoading(false)
+                //     }
+                // }catch(err){
+                //     Alert.alert('Error',err.message)
+                //     setLoading(false)
+                // }
             }}
         >
         {(props)=>(

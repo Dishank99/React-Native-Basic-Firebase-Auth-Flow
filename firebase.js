@@ -1,14 +1,16 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
+import env from './env'
+
 const App = firebase.initializeApp({
-    apiKey: "AIzaSyCNW_RgIZtOBYnUmgBP7kIGiaWHgVEelIU",
-  authDomain: "react-auth-flow.firebaseapp.com",
-  databaseURL: "https://react-auth-flow.firebaseio.com",
-  projectId: "react-auth-flow",
-  storageBucket: "react-auth-flow.appspot.com",
-  messagingSenderId: "826932698392",
-  appId: "1:826932698392:web:febb3d809dd3adbb8b926d"
+  apiKey: env.REACT_FIREBASE_API_KEY,
+  authDomain: env.REACT_FIREBASE_AUTH_DOMAIN,
+  databaseURL: env.REACT_FIREBASE_DATABASE_URL,
+  projectId: env.REACT_FIREBASE_PROJECT_ID,
+  storageBucket: env.REACT_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: env.REACT_FIREBASE_MESSAGING_SENDER_ID,
+  appId: env.REACT_FIREBASE_APP_ID
 })
 
 export const auth = App.auth()
